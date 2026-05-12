@@ -30,5 +30,15 @@ do
   sleep 2;
 done
 
+if [ "$RUN_DB_PREPARE" = "true" ]; then
+  echo "Running db:chatwoot_prepare..."
+  bundle exec rails db:chatwoot_prepare
+fi
+
+if [ "$RUN_IP_LOOKUP_SETUP" = "true" ]; then
+  echo "Running ip_lookup:setup..."
+  bundle exec rails ip_lookup:setup
+fi
+
 # Execute the main process of the container
 exec "$@"
