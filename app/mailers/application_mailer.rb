@@ -1,7 +1,12 @@
 class ApplicationMailer < ActionMailer::Base
   include ActionView::Helpers::SanitizeHelper
 
-  default from: ENV.fetch('MAILER_SENDER_EMAIL', 'Tokfluence <contact@tokfluence.com>')
+  FALLBACK_SENDER_EMAIL = 'Tokfluence <contact@tokfluence.com>'.freeze
+
+  default from: -> {
+    val = ENV['MAILER_SENDER_EMAIL'].to_s
+    val.present? && !val.include?('example.com') ? val : FALLBACK_SENDER_EMAIL
+  }
   before_action { ensure_current_account(params.try(:[], :account)) }
   around_action :switch_locale
   layout 'mailer/base'
