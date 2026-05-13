@@ -1,0 +1,47 @@
+version: 1
+swarm:
+  name: "chatwoot-tokfluence: Rails 7 + Vue 3 swarm"
+  main: architect
+
+  instances:
+    architect:
+      description: "Lead architect. Plans, scopes risk, coordinates implementation across backend, frontend, vue, enterprise, and tests."
+      directory: .
+      model: opus
+      connections: [backend, frontend, vue, enterprise, tests]
+      prompt_file: .claude-on-rails/prompts/architect.md
+
+    backend:
+      description: "Rails backend (OSS). Models, controllers, services, jobs, policies, mailers, channels under app/, lib/, config/, db/."
+      directory: .
+      model: opus
+      allowed_tools: [Read, Edit, Write, Bash, Grep, Glob, LS]
+      prompt_file: .claude-on-rails/prompts/backend.md
+
+    frontend:
+      description: "Embeddable Vue surfaces: app/javascript/{widget,sdk,portal,survey,v3}. Tailwind, Vite, size budgets, embed constraints."
+      directory: .
+      model: opus
+      allowed_tools: [Read, Edit, Write, Bash, Grep, Glob, LS]
+      prompt_file: .claude-on-rails/prompts/frontend.md
+
+    vue:
+      description: "Dashboard SPA: app/javascript/{dashboard,components-next,shared}. Vue 3 Composition API, Vuex (legacy) + Pinia (new), Vue Router, FormKit, composables."
+      directory: .
+      model: opus
+      allowed_tools: [Read, Edit, Write, Bash, Grep, Glob, LS]
+      prompt_file: .claude-on-rails/prompts/vue.md
+
+    enterprise:
+      description: "Enterprise overlay under enterprise/. Mirrors OSS Ruby tree. Uses prepend_mod_with / include_mod_with. Specs in spec/enterprise/."
+      directory: .
+      model: opus
+      allowed_tools: [Read, Edit, Write, Bash, Grep, Glob, LS]
+      prompt_file: .claude-on-rails/prompts/enterprise.md
+
+    tests:
+      description: "Test coverage. RSpec (incl. spec/enterprise), Vitest, Playwright, FactoryBot. Reproduce before fixing. Never weaken tests."
+      directory: .
+      model: opus
+      allowed_tools: [Read, Edit, Write, Bash, Grep, Glob, LS]
+      prompt_file: .claude-on-rails/prompts/tests.md
