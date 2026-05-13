@@ -600,6 +600,12 @@ Rails.application.routes.draw do
   post 'webhooks/tiktok', to: 'webhooks/tiktok#events'
   post 'webhooks/shopify', to: 'webhooks/shopify#events'
 
+  namespace :internal do
+    namespace :bots do
+      post 'sales/webhook/:bot_id', to: 'sales_webhook#create'
+    end
+  end
+
   namespace :twitter do
     resource :callback, only: [:show]
   end
