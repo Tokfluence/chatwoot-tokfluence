@@ -1,3 +1,5 @@
+> Start with [INDEX.md](INDEX.md): a map of this repo; follow its pointers for detail.
+
 # Chatwoot Development Guidelines
 
 ## Build / Test / Lint
