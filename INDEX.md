@@ -4,6 +4,11 @@ Read this first; follow pointers for detail.
 
 Tokfluence fork of Chatwoot (Rails + Vue customer support platform). Default branch: develop.
 
+## Agents
+- Orchestrator: Pepa (Grok Bot) plans, dispatches, reviews, merges with Daniel's approval.
+- Owner agent: Rafi [Tokfluence · Owner / Backend lead]
+- Workers: Claude Code sessions on jarvis (cc-dispatch), in git worktrees; summaries start with a status keyword (DONE, BLOCKED, NEEDS-REVIEW, RUNNING, FAILED).
+
 ## Docs
 - AGENTS.md / CLAUDE.md: build, test, lint commands and coding rules.
 - README.md: upstream Chatwoot readme.
